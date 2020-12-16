@@ -55,54 +55,61 @@ $(document).ready(function() {
       // create article for each tweet
       const $tweet = createTweetElement(tweet);
       //add the article to the DOM
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     }
   }
-
-
  
+  // using AJAX to fetch tweets 
+  const loadTweets = () => {
+     // create the url for the request
+     const url = `http://localhost:8080/tweets`;
+
+     // Create an AJAX request GET
+     $.ajax({
+       method: 'GET', 
+       url: url,
+     })
+       .then((result) => {
+         // success. getting the result here
+         console.log(result);
+         renderTweets(result);
+       })
+       .catch((err) => console.log(err));
+  }
+
+  // on loading fetch the tweets and add them to the DOM
+  loadTweets();
+
+
   $('form').on('submit', function(event) {
     //prevent the default form submission behaviour
     event.preventDefault();
-console.log("Hhhhhhh")
- const user = "fatima"
-    const tweet = {
-      user: user,
-      content: {
-        text: $("#tweet-text").val()
-      },
-      created_at: Date.now()
-    };
-
-console.log(tweet)
-  });
-
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
-renderTweets(data);
-
+    // create the url for the request
+    const url = `http://localhost:8080/tweets`;
+    // if the tweet is not empty and below 140 cararcters post the tweet 
+    if ($("#tweet-text").val() && $("#tweet-text").val().length <=140) {
+      //turn the data into a query string
+      const values = $("#tweet-text").serialize();
+      // Create an AJAX request POST
+      $.ajax({
+          url: url,
+          type: "post",
+          data: values ,
+          success: function (response) {
+            $("#tweet-text").val("");
+            console.log("request done");
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            console.log(textStatus, errorThrown);
+          }
+      });
+    } else if ($("#tweet-text").val() && $("#tweet-text").val().length > 140) {
+      alert("The tweet content is too long");
+    } else {
+      alert("The tweet is not present");
+    }
+   
+   
+});   
 
 });

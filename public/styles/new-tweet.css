@@ -27,15 +27,11 @@ textarea {
   margin-top:10px;
   width: 100%;
   background-color: transparent;
-  border: transparent;
+  border: none;
 }
 textarea:focus{
   border: transparent;
 }
 .change{
   color:red;
-}
-.footer-tweet{
-  display:flex;
-  
 }
