@@ -13,13 +13,13 @@ label{
   border-bottom: solid 5px rgb(92, 90, 90);
   padding-bottom:1rem ;
 }
-footer{
+.form-footer{
   margin-top: 15px;
   padding: 10px;
   display:flex;
   justify-content: space-between;
 }
-output{
+.counter{
   font-family: 'Bungee', cursive;
   color:  rgb(92, 90, 90);
 }
@@ -34,4 +34,8 @@ textarea:focus{
 }
 .change{
   color:red;
+}
+.footer-tweet{
+  display:flex;
+  
 }

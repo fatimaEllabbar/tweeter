@@ -11,7 +11,7 @@ nav{
 .logo{
   font-family: 'Bungee', cursive;
  }
-.btn{
+.btnn{
   display:flex;
   flex-direction: column;
 }
@@ -20,6 +20,7 @@ nav{
   transform: rotate(90deg);
   font-size: 32px;
   font-weight: bold;
+
 }
 a{
   display:flex;
