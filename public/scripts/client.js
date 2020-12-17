@@ -87,6 +87,9 @@ $(document).ready(function() {
     const url = `http://localhost:8080/tweets`;
     // if the tweet is not empty and below 140 cararcters post the tweet 
     if ($("#tweet-text").val() && $("#tweet-text").val().length <=140) {
+
+      $('.error').hide();
+
       //turn the data into a query string
       const values = $("#tweet-text").serialize();
       // Create an AJAX request POST
@@ -96,6 +99,8 @@ $(document).ready(function() {
           data: values ,
           success: function (response) {
             $("#tweet-text").val("");
+            $('.counter').text(140);
+            $("#tweets-container").empty();
             loadTweets();
           },
           error: function(jqXHR, textStatus, errorThrown) {
@@ -103,9 +108,12 @@ $(document).ready(function() {
           }
       });
     } else if ($("#tweet-text").val() && $("#tweet-text").val().length > 140) {
-      alert("The tweet content is too long");
+      // show the error message
+      $('.error').html(`&#9888 The tweet content is too long  max cararteres is 140! &#9888`);
+      $('.error').show();
     } else {
-      alert("The tweet is not present");
+      $('.error').html(`&#9888 The tweet is empty please type a some text! &#9888`);
+      $('.error').show();
     }
    
    

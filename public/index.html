@@ -59,6 +59,9 @@
         <h2>Compose Tweet</h2>
         <form method="POST" action="/tweets/">
           <div class="tweet-containerr"> 
+            <div class='error'>
+             <span> &#9888 error &#9888</span>
+            </div>
             <label for="tweet-text">What are you humming about?</label>
             <br>
             <textarea name="text" id="tweet-text"></textarea>
@@ -70,22 +73,6 @@
         </form>
       </section>
       <section id="tweets-container">
-        <article>
-          <header class="tweet-header">
-            <div class="image">
-              <image class="avatar" src="/images/profile-hex.png">
-              <h5>name</h5>
-            </div>
-            <h3 class="hide">@Misfatima</h3>
-          </header>
-          <div class ="tweet-content">
-            <p> tweetdasfsafdsfdfdf</p>
-          </div>
-          <footer class ="footer-tweet">
-            <output> 10days</output>
-            <span class="emoji"><i class="fal fa-flag"></i><i class="fas fa-angle-double-down"></i>🏴 ↹ 🖤❤</span>
-          </footer>
-        </article>
 
       </section>
     </main>

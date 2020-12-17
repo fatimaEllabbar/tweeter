@@ -17,6 +17,16 @@ label{
   border-bottom: solid 5px rgb(92, 90, 90);
   padding-bottom:1rem ;
 }
+.error{
+  border: solid 2px red;
+  color: red;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  display: none;
+}
 .form-footer{
   margin-top: 15px;
   padding: 10px;
