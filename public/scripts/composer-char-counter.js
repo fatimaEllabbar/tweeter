@@ -8,7 +8,7 @@ $(document).ready(function() {
     if(counter <= 140){
       // if the number below 140 remove the color red and print the counter in the output
       $('.counter').removeClass("change")
-      $('.counter').val(counter);
+      $('.counter').val(140-counter);
     } else{
        // if the number over 140 the color become red and the counter grows negative
       $('.counter').addClass("change")

@@ -1,9 +1,13 @@
 button{
   font-family: 'Bungee', cursive;
   background-color:  #4056A1;
-  border: transparent;
+  border: none;
   color: white;
+  cursor: pointer;
   
+}
+button:hover{
+  border : solid 5px rgb(172, 232, 252)
 }
 label{
   color:  rgb(92, 90, 90);

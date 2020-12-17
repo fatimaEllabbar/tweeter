@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
 
-
+  // get the time difference between now and the date of the creation of the tweet in minutes or secondes or hours or days or years.
   const timePassed = (time) => {
     let Difference_In_Time = Date.now() - new Date(time)
     let Difference_In_Secondes= Difference_In_Time / 1000
@@ -71,7 +71,6 @@ $(document).ready(function() {
      })
        .then((result) => {
          // success. getting the result here
-         console.log(result);
          renderTweets(result);
        })
        .catch((err) => console.log(err));
@@ -97,7 +96,7 @@ $(document).ready(function() {
           data: values ,
           success: function (response) {
             $("#tweet-text").val("");
-            console.log("request done");
+            loadTweets();
           },
           error: function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);
