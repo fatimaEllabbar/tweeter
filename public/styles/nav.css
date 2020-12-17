@@ -17,14 +17,16 @@ nav{
   display:flex;
   flex-direction: column;
 }
-.display{
-  color: red;
-  transform: rotate(90deg);
-  font-size: 32px;
-  font-weight: bold;
-
+@keyframes anime{
+   50% {transform: translate(0px, 10px); }
 }
 a{
+  color: red;
+  font-weight: bold;
+  font-size: 2rem;
   display:flex;
-  justify-content:center
+  justify-content:center;
+  animation-name: anime;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
 }

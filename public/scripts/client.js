@@ -22,6 +22,12 @@ $(document).ready(function() {
       return Math.trunc(Difference_In_Secondes) +" secondes"
     }
   }
+  // Preventing XSS with Escaping
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
   
   // create an article
   const createTweetElement = (tweet) => {
@@ -35,14 +41,13 @@ $(document).ready(function() {
             <h3 class="hide">${tweet.user.handle}</h3>
           </header>
           <div class ="tweet-content">
-            <p>${tweet.content.text}</p>
+            <p>${escape(tweet.content.text)}</p>
           </div>
           <footer class ="footer-tweet">
             <output> ${timePassed(tweet.created_at)}</output>
-            <span class="emoji">🏴 ↹ 🖤❤</span>
+            <span class="emoji"> <i class="fa fa-flag"></i> <i class="fa fa-retweet"> </i> <i class="fa fa-heart"> </i>  </span>
           </footer>
       </article>`
-
     return element;
   }
 
@@ -81,10 +86,18 @@ $(document).ready(function() {
 
 
   $('form').on('submit', function(event) {
+
     //prevent the default form submission behaviour
     event.preventDefault();
+
     // create the url for the request
     const url = `http://localhost:8080/tweets`;
+
+
+    //console.log($("<h5>").text($("#tweet-text").val()));
+
+
+
     // if the tweet is not empty and below 140 cararcters post the tweet 
     if ($("#tweet-text").val() && $("#tweet-text").val().length <=140) {
 
@@ -92,6 +105,7 @@ $(document).ready(function() {
 
       //turn the data into a query string
       const values = $("#tweet-text").serialize();
+
       // Create an AJAX request POST
       $.ajax({
           url: url,
@@ -110,13 +124,10 @@ $(document).ready(function() {
     } else if ($("#tweet-text").val() && $("#tweet-text").val().length > 140) {
       // show the error message
       $('.error').html(`&#9888 The tweet content is too long  max cararteres is 140! &#9888`);
-      $('.error').show();
+      $('.error').slideDown("slow");
     } else {
-      $('.error').html(`&#9888 The tweet is empty please type a some text! &#9888`);
-      $('.error').show();
-    }
-   
-   
-});   
-
+      $('.error').html(`&#9888 The tweet is empty please enter a tweet! &#9888`);
+      $('.error').slideDown("slow");
+    } 
+  });   
 });
