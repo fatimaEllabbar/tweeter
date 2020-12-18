@@ -20,8 +20,9 @@ nav{
 @keyframes anime{
    50% {transform: translate(0px, 10px); }
 }
-a{
+.display{
   color: red;
+  border: none;
   font-weight: bold;
   font-size: 2rem;
   display:flex;
@@ -29,4 +30,7 @@ a{
   animation-name: anime;
   animation-duration: 1s;
   animation-iteration-count: infinite;
+}
+.display:hover{
+border:none;
 }
