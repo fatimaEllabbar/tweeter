@@ -1,6 +1,7 @@
+
 .header{
   height: 400px;
-  width: 100%;
+  width: 40%;
   background-color: #cc8800;
   background-image: url("https://www.transparenttextures.com/patterns/3px-tile.png");
   display :flex;
@@ -9,3 +10,10 @@
   align-items: center;
   margin-top: 120px;
   }
+
+/* On screens that are 600px wide or less */
+@media only screen and (max-width: 600px) {
+.header{
+  width: 100%;
+  }
+}
