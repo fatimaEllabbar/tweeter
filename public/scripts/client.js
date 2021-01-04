@@ -116,9 +116,9 @@ $(document).ready(function() {
         type: "post",
         data: values ,
         success: function(response) {
+          $("#tweets-container").empty();
           $("#tweet-text").val("");
           $('.counter').text(140);
-          $("#tweets-container").empty();
           loadTweets();
         },
         error: function(jqXHR, textStatus, errorThrown) {
